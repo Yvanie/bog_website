@@ -36,8 +36,11 @@ body {
 
 .contact-info {
     display: flex;
+    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     color: #ffffff;
+    text-align: center;
     padding-bottom: 20px;
 }
 
@@ -45,7 +48,6 @@ body {
     margin-right: 10px; 
     font-size: 15px;
     font-weight: 500;
-    padding: ;
 }
 
 .contact-info i {
