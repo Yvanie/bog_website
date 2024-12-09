@@ -38,12 +38,14 @@ body {
     display: flex;
     align-items: center;
     color: #ffffff;
+    padding-bottom: 20px;
 }
 
 .contact-info span {
     margin-right: 10px; 
     font-size: 15px;
     font-weight: 500;
+    padding: ;
 }
 
 .contact-info i {
