@@ -1,5 +1,7 @@
 const infoNavbar = document.querySelector('.info-navbar');
 const navbar = document.querySelector('.navbar');
+
+
 let lastScrollTop = 0;
 
 window.addEventListener('scroll', () => {
@@ -31,6 +33,33 @@ window.addEventListener('scroll', () => {
 
     lastScrollTop = scrollPosition; // Update last scroll position
 });
+
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+function showSlide(index) {
+  // Reset all slides to hidden
+  slides.forEach(slide => slide.style.display = "none");
+
+  // Display the current slide
+  slides[index].style.display = "block";
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(currentSlide);
+}
+
+// Show the first slide initially
+showSlide(currentSlide);
+
+// Change slide every 5 seconds
+setInterval(nextSlide, 5000);
+
 
 // Hamburger Menu Toggle
 const hamburger = document.getElementById('hamburger');
@@ -187,3 +216,5 @@ document.getElementById('next-page').onclick = () => {
 // Initial render
 renderPosts();
 renderPagination();
+
+

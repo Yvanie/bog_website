@@ -86,7 +86,7 @@ body {
 }
 
 .logo img {
-    height: 60px; 
+    height: 80px; 
 }
 
 .nav-links {
@@ -132,7 +132,121 @@ body {
     background-color: #f9f9f9; /* Light background */
     border-radius: 10px; /* Rounded corners */
 }
-
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  .slider-container .slider {
+    display: flex;
+    transition: transform 1s ease;
+  }
+  
+.slider-container .slide {
+    position: relative;
+    min-width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Darker overlay for background */
+  .slider-container .slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Darken the background */
+    z-index: 0; /* Ensure it stays behind the text */
+  }
+  
+  .slider-container .slide-1 {
+    background-image: url('img/image1.jpg');
+  }
+  
+  .slider-container .slide-2 {
+    background-image: url('img/image2.jpg');
+  }
+  
+  .slider-container .slide-3 {
+    background-image: url('img/image3.jpg');
+  }
+  
+  /* Text Styles */
+  .slider-container .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    
+    z-index: 1; /* Ensure the text is in front of the overlay */
+  }
+  
+  .slider-container .overlay-text h2 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+  }
+  
+  .slider-container .overlay-text p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 30px;
+    font-weight: 400;
+    text-align: center;
+  }
+  
+  .slider-container .cta-button {
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .slider-container .cta-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Manual Control Buttons */
+  .slider-container .prev, .next {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease;
+  }
+  
+  .slider-container .prev {
+    left: 10px;
+  }
+  
+  .slider-container .next {
+    right: 10px;
+  }
+  
+ .slider-container .prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
 .home-content {
     flex: 1; /* Take remaining space */
     padding: 20px;
@@ -838,6 +952,10 @@ input, textarea {
 }
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
+    .logo img {
+        height: 60px; 
+    }
+    
     .partner-logo {
         flex: 0 0 20%; /* Show 5 logos per row */
     }
@@ -1315,7 +1433,7 @@ input, textarea {
 .content {
     display: flex;
     justify-content: space-between;
-    gap: 5px; /* Space between cards */
+    gap: 20px; /* Space between cards */
     flex-wrap: wrap; /* Ensure cards wrap on smaller screens */
     text-align: justify;
 }
@@ -1323,8 +1441,8 @@ input, textarea {
 .card {
     background-color: #fff;
     border-radius: 4px;
-    padding: 40px;
-    width: 25%; /* Each card takes up 25% of the row */
+    padding: 50px;
+    width: 20%; /* Each card takes up 30% of the row */
     box-shadow: 0 4px 5px rgba(0, 123, 255, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     opacity: 1;
@@ -1343,20 +1461,37 @@ input, textarea {
     border-left: 0;  /* Left border disappears on hover */
 }
 
-/* Vision Card: Background Color Instead of Left Border */
-.card.vision {
-    background-color: #e6f7ff;  /* Light blue background */
-    border: none;  /* Remove left border */
+/* Vision & Signature Section (Split into Two Rows) */
+.card.vision-signature {
+    padding-left: 5px;
+    width: 30%; /* Adjusted width for the middle card */
+    display: flex;
+    flex-direction: column; /* Stack Vision and Signature vertically */
 }
 
-.card.vision:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+.vision, .signature {
+    width: 100%; /* Full width for each row */
+    margin-bottom: 20px; /* Add space between rows */
 }
+
+/* Vision Card */
+.vision {
+   
+    padding: 20px;
+}
+
+
+
+/* Signature Card */
+.signature {
+    
+    padding: 20px;
+}
+
 
 /* Hover Effect for Icons (all cards) */
 .card:hover .icon {
-    color: #0056b3; /* Darker blue */
+    color: #0056b3;
 }
 
 /* Card Titles */
@@ -1367,7 +1502,12 @@ input, textarea {
     font-weight: 600;
 }
 
-/* Card Paragraph Styling */
+.card h4 {
+    font-size: 1.4em;
+    color: #333;
+    margin-top: 10px;
+}
+
 .card p {
     font-size: 1.2em;
     color: #777;
@@ -1375,7 +1515,7 @@ input, textarea {
 }
 
 /* Icons Styling */
- .icon {
+.icon {
     font-size: 50px;
     color: #007bff;
     margin-bottom: 20px;
@@ -1405,6 +1545,15 @@ input, textarea {
     .card {
         width: 80%; /* Cards take up more space on smaller screens */
         margin-bottom: 30px;
+    }
+
+    .card.vision-signature {
+        width: 80%; /* Full width for vision-signature section */
+        flex-direction: column;
+    }
+
+    .vision, .signature {
+        width: 100%; /* Cards inside vision-signature take full width */
     }
 }
 
@@ -2016,5 +2165,159 @@ input, textarea {
     .sp-icon {
         font-size: 16px;
         margin: 0 6px;
+    }
+}
+
+@media (max-width: 1024px) {
+  .slider-container .overlay-text h2 {
+    font-size: 2.5rem;
+  }
+
+  .slider-container .overlay-text p {
+    font-size: 1rem;
+    line-height: 28px;
+  }
+
+  .slider-container .cta-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .slider-container .prev, .next {
+    padding: 12px;
+    font-size: 1.7rem;
+  }
+}
+
+/* For smaller devices (max-width 768px) */
+@media (max-width: 768px) {
+    .slider-container .overlay-text h2 {
+      font-size: 2rem;
+    }
+  
+    .slider-container .overlay-text p {
+      font-size: 0.9rem;
+      line-height: 24px;
+    }
+  
+    .slider-container .cta-button {
+      padding: 8px 15px;
+      font-size: 0.8rem;
+    }
+  
+    .slider-container .prev, .next {
+      padding: 10px;
+      font-size: 1.5rem;
+    }
+  }
+  
+  /* For mobile screens (max-width 480px) */
+  @media (max-width: 480px) {
+    .slider-container .overlay-text h2 {
+      font-size: 1.6rem;
+    }
+  
+    .slider-container .overlay-text p {
+      font-size: 0.85rem;
+      line-height: 22px;
+    }
+  
+    .slider-container .cta-button {
+      padding: 6px 12px;
+      font-size: 0.7rem;
+    }
+  
+    .slider-container .prev, .next {
+      padding: 8px;
+      font-size: 1.3rem;
+    }
+  }
+
+  .values-core {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns layout initially */
+    grid-template-rows: repeat(2, auto); /* Rows for the cards */
+    grid-gap: 30px;
+    grid-template-areas: 
+        "humanity ethics"
+        "joint-satisfaction simplicity";
+}
+
+.value-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px; /* Minimum height to prevent overly small cards */
+}
+
+.value-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.value-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    flex-grow: 1; /* Ensures the text takes up available space */
+    margin-bottom: 20px; /* Prevent text from sticking to the bottom */
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.value-card h2 {
+    font-size: 1.8rem;
+    color: #007BFF; /* A single accent color for all headings */
+}
+
+/* Grid item specific styles */
+.humanity {
+    grid-area: humanity;
+}
+
+.ethics {
+    grid-area: ethics;
+}
+
+.joint-satisfaction {
+    grid-area: joint-satisfaction;
+}
+
+.simplicity {
+    grid-area: simplicity;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .values-core {
+        grid-template-columns: 1fr 1fr; /* Two columns for medium screens */
+        grid-template-areas: 
+            "humanity humanity"
+            "ethics joint-satisfaction"
+            "simplicity simplicity";
+    }
+}
+
+@media (max-width: 768px) {
+    .values-core {
+        grid-template-columns: 1fr; /* Single column for smaller screens */
+        grid-template-areas: 
+            "humanity"
+            "ethics"
+            "joint-satisfaction"
+            "simplicity";
     }
 }
